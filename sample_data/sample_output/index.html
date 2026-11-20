@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Screen Recorder — sample edit</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 760px; margin: 0 auto; padding: 24px 16px; color: #1f2937; line-height: 1.6; }
+  h1 { font-size: 24px; } h2 { font-size: 18px; margin-top: 32px; }
+  .cards { display: flex; gap: 12px; flex-wrap: wrap; }
+  .card { flex: 1; min-width: 140px; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; }
+  .card b { font-size: 22px; display: block; }
+  .card span { font-size: 12px; color: #6b7280; }
+  del { color: #dc2626; background: #fef2f2; }
+  pre { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; overflow-x: auto; font-size: 13px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { border: 1px solid #e5e7eb; padding: 6px 10px; text-align: left; }
+  a { color: #2563eb; }
+  .note { font-size: 13px; color: #6b7280; }
+</style>
+</head>
+<body>
+<h1>&#9679; Screen Recorder &mdash; sample edit</h1>
+<p>A real 33.6&nbsp;s screen recording (test-pattern video + public Harvard-sentences speech),
+transcribed locally with Whisper tiny, then edited by deleting one sentence.
+The video was cut to match &mdash; no server, no upload.</p>
+
+<div class="cards">
+  <div class="card"><b>33.6s</b><span>original video</span></div>
+  <div class="card"><b>31.4s</b><span>edited video</span></div>
+  <div class="card"><b>82</b><span>words transcribed</span></div>
+  <div class="card"><b>9</b><span>words deleted</span></div>
+  <div class="card"><b>2.2s</b><span>removed</span></div>
+</div>
+
+<h2>Before / after</h2>
+<p><strong>Original transcript</strong> (deleted sentence struck through):</p>
+<p>The birch can use lid on the smooth planks, glue the sheet to the dark blue background. It is easy to tell the depth of a well. <del>These days a chicken leg is a rare dish.</del> Rice is often served in round bowls. The juice of lemon makes fine punch. The box was thrown beside the pork truck. The hogs were fed chopped corn and garbage. Four hours a steady work faced us. A large size and stockings is hard to sell.</p>
+<p><strong>Edited transcript</strong>:</p>
+<p>The birch can use lid on the smooth planks, glue the sheet to the dark blue background. It is easy to tell the depth of a well. Rice is often served in round bowls. The juice of lemon makes fine punch. The box was thrown beside the pork truck. The hogs were fed chopped corn and garbage. Four hours a steady work faced us. A large size and stockings is hard to sell.</p>
+
+<h2>Cut report</h2>
+<table>
+  <tr><th>Removed range</th><th>Kept ranges</th></tr>
+  <tr><td>10.88s &ndash; 13.12s</td>
+      <td>0.00s &ndash; 10.88s, 13.12s &ndash; 33.61s</td></tr>
+</table>
+
+<h2>Edited subtitles (edited.srt)</h2>
+<pre>1
+00:00:00,110 --&gt; 00:00:03,390
+The birch can use lid on the smooth planks,
+
+2
+00:00:04,560 --&gt; 00:00:06,620
+glue the sheet to the dark blue background.
+
+3
+00:00:08,030 --&gt; 00:00:09,830
+It is easy to tell the depth of a well.
+
+4
+00:00:12,130 --&gt; 00:00:14,010
+Rice is often served in round bowls.
+
+5
+00:00:15,240 --&gt; 00:00:17,180
+The juice of lemon makes fine punch.
+
+6
+00:00:18,270 --&gt; 00:00:20,310
+The box was thrown beside the pork truck.
+
+7
+00:00:21,550 --&gt; 00:00:23,630
+The hogs were fed chopped corn and garbage.
+
+8
+00:00:25,010 --&gt; 00:00:26,990
+Four hours a steady work faced us.
+
+9
+00:00:27,980 --&gt; 00:00:29,980
+A large size and stockings is hard to sell.</pre>
+
+<h2>Download the sample files</h2>
+<ul>
+  <li><a href="edited_transcript.txt">edited_transcript.txt</a> — edited transcript</li>
+  <li><a href="edited.srt">edited.srt</a> — re-timed subtitles</li>
+  <li><a href="cuts.json">cuts.json</a> — cut report</li>
+  <li><a href="../sample_transcript.json">sample_transcript.json</a> — full word-level transcript</li>
+</ul>
+
+<p class="note">The edited video file itself is not in this repo (GitHub Pages demo is
+text-only). Run it yourself: <code>python -m recorder cut sample.webm
+sample_transcript.json --delete-words 27-35 --out edited/</code> after
+regenerating the sample video with <code>sample_data/make_sample.sh</code>.
+See the <a href="https://github.com/mrabr381/browser-screen-recorder">README</a> for full setup.</p>
+</body>
+</html>

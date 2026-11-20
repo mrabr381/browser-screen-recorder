@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Secrets — never commit these
+.env
+
+# Generated reports (regenerated on every run)
+report/
+output/
+edited/
+
+# Local run data
+*.db
+
+# Binary media — the connector cannot push binaries, and the sample video
+# is regenerated locally by sample_data/make_sample.sh
+*.webm
+*.mp4
+*.wav
+# Extension icons are binary PNGs (same reason). The manifest does not
+# reference them, so the extension loads fine without them; upload them
+# via the GitHub web UI later if a branded icon is wanted.
+extension/icons/*.png
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

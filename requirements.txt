@@ -1,0 +1,11 @@
+# Pinned to the versions actually installed and tested (2026-11-20).
+# av is pinned to 12.3.0 on purpose: faster-whisper 1.2.1 calls
+# av.open(..., metadata_errors=...) and PyAV 19 removed that keyword,
+# which breaks transcription with "unexpected keyword argument".
+streamlit==1.67.0
+faster-whisper==1.2.1
+av==12.3.0
+ctranslate2==4.9.0
+huggingface-hub==2.4.0
+onnxruntime==1.32.0
+tokenizers==0.23.3

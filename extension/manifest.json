@@ -1,0 +1,18 @@
+{
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Screen Recorder"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "description": "Record your screen, tab or camera for free with no time limit. Recordings stay on your machine; transcribe and edit them with the companion local app.",
+  "manifest_version": 3,
+  "name": "Screen Recorder \u2014 Local Transcript Editor",
+  "permissions": [
+    "desktopCapture",
+    "downloads",
+    "storage"
+  ],
+  "version": "1.0.0"
+}

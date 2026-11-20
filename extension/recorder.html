@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Screen Recorder — recording tab</title>
+<style>
+  body { margin: 0; font-family: system-ui, sans-serif; background: #111827; color: #f9fafb; }
+  header { display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: #1f2937; }
+  header h1 { font-size: 16px; margin: 0; }
+  #timer { font-variant-numeric: tabular-nums; font-size: 20px; font-weight: 600; }
+  .rec-dot { width: 12px; height: 12px; border-radius: 50%; background: #6b7280; display: inline-block; }
+  .rec-dot.live { background: #ef4444; animation: blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity: 0.25; } }
+  main { padding: 16px 20px; }
+  video { width: 100%; max-height: 62vh; background: #000; border-radius: 8px; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; align-items: center; }
+  button { padding: 10px 16px; font-size: 14px; border: 0; border-radius: 8px; cursor: pointer; }
+  button:disabled { opacity: 0.45; cursor: default; }
+  #start { background: #dc2626; color: #fff; font-weight: 600; }
+  #stop { background: #f9fafb; color: #111827; font-weight: 600; }
+  #pause { background: #374151; color: #f9fafb; }
+  #download, #open-app { background: #2563eb; color: #fff; }
+  label { font-size: 13px; display: flex; gap: 6px; align-items: center; }
+  #status { font-size: 13px; color: #d1d5db; min-height: 1.2em; }
+  #status.error { color: #fca5a5; }
+  .hint { font-size: 12px; color: #9ca3af; line-height: 1.6; }
+</style>
+</head>
+<body>
+<header>
+  <span class="rec-dot" id="dot"></span>
+  <h1>Screen Recorder</h1>
+  <span id="timer">00:00</span>
+  <span id="size"></span>
+</header>
+<main>
+  <video id="preview" autoplay muted playsinline></video>
+  <div class="row">
+    <button id="start">● Start recording</button>
+    <button id="pause" disabled>Pause</button>
+    <button id="stop" disabled>■ Stop &amp; save</button>
+    <button id="download" disabled>Download recording</button>
+    <button id="open-app">Open transcript editor</button>
+  </div>
+  <div class="row">
+    <label><input type="checkbox" id="camera"> Camera picture-in-picture</label>
+    <label><input type="checkbox" id="mic" checked> Microphone (if screen has no audio)</label>
+  </div>
+  <p id="status">Choose what to record — the browser will ask which screen, window or tab to share.</p>
+  <p class="hint">Your recording is saved to your Downloads folder as a WebM file. Nothing is uploaded.
+  Open it in the local transcript editor to transcribe it with Whisper and cut it by deleting words.</p>
+</main>
+<script src="recorder.js"></script>
+</body>
+</html>

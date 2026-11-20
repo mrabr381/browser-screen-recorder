@@ -1,0 +1,23 @@
+{
+  "source": "sample.webm",
+  "original_duration": 33.608,
+  "edited_duration": 31.368,
+  "words_total": 82,
+  "words_deleted": 9,
+  "removed_ranges": [
+    [
+      10.88,
+      13.12
+    ]
+  ],
+  "kept_ranges": [
+    [
+      0.0,
+      10.88
+    ],
+    [
+      13.12,
+      33.608
+    ]
+  ]
+}

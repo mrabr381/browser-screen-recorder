@@ -1,0 +1,500 @@
+{
+  "source": "sample.webm",
+  "model": "tiny",
+  "language": "en",
+  "duration": 33.608,
+  "words": [
+    {
+      "text": "The",
+      "start": 0.11,
+      "end": 0.77,
+      "deleted": false
+    },
+    {
+      "text": "birch",
+      "start": 0.77,
+      "end": 1.11,
+      "deleted": false
+    },
+    {
+      "text": "can",
+      "start": 1.11,
+      "end": 1.39,
+      "deleted": false
+    },
+    {
+      "text": "use",
+      "start": 1.39,
+      "end": 1.65,
+      "deleted": false
+    },
+    {
+      "text": "lid",
+      "start": 1.65,
+      "end": 1.95,
+      "deleted": false
+    },
+    {
+      "text": "on",
+      "start": 1.95,
+      "end": 2.25,
+      "deleted": false
+    },
+    {
+      "text": "the",
+      "start": 2.25,
+      "end": 2.35,
+      "deleted": false
+    },
+    {
+      "text": "smooth",
+      "start": 2.35,
+      "end": 2.69,
+      "deleted": false
+    },
+    {
+      "text": "planks,",
+      "start": 2.69,
+      "end": 3.39,
+      "deleted": false
+    },
+    {
+      "text": "glue",
+      "start": 4.56,
+      "end": 4.62,
+      "deleted": false
+    },
+    {
+      "text": "the",
+      "start": 4.62,
+      "end": 4.9,
+      "deleted": false
+    },
+    {
+      "text": "sheet",
+      "start": 4.9,
+      "end": 5.06,
+      "deleted": false
+    },
+    {
+      "text": "to",
+      "start": 5.06,
+      "end": 5.3,
+      "deleted": false
+    },
+    {
+      "text": "the",
+      "start": 5.3,
+      "end": 5.44,
+      "deleted": false
+    },
+    {
+      "text": "dark",
+      "start": 5.44,
+      "end": 5.62,
+      "deleted": false
+    },
+    {
+      "text": "blue",
+      "start": 5.62,
+      "end": 5.82,
+      "deleted": false
+    },
+    {
+      "text": "background.",
+      "start": 5.82,
+      "end": 6.62,
+      "deleted": false
+    },
+    {
+      "text": "It",
+      "start": 8.03,
+      "end": 8.07,
+      "deleted": false
+    },
+    {
+      "text": "is",
+      "start": 8.07,
+      "end": 8.17,
+      "deleted": false
+    },
+    {
+      "text": "easy",
+      "start": 8.17,
+      "end": 8.31,
+      "deleted": false
+    },
+    {
+      "text": "to",
+      "start": 8.31,
+      "end": 8.59,
+      "deleted": false
+    },
+    {
+      "text": "tell",
+      "start": 8.59,
+      "end": 8.71,
+      "deleted": false
+    },
+    {
+      "text": "the",
+      "start": 8.71,
+      "end": 8.95,
+      "deleted": false
+    },
+    {
+      "text": "depth",
+      "start": 8.95,
+      "end": 9.15,
+      "deleted": false
+    },
+    {
+      "text": "of",
+      "start": 9.15,
+      "end": 9.41,
+      "deleted": false
+    },
+    {
+      "text": "a",
+      "start": 9.41,
+      "end": 9.53,
+      "deleted": false
+    },
+    {
+      "text": "well.",
+      "start": 9.53,
+      "end": 9.83,
+      "deleted": false
+    },
+    {
+      "text": "These",
+      "start": 10.93,
+      "end": 11.17,
+      "deleted": false
+    },
+    {
+      "text": "days",
+      "start": 11.17,
+      "end": 11.37,
+      "deleted": false
+    },
+    {
+      "text": "a",
+      "start": 11.37,
+      "end": 11.65,
+      "deleted": false
+    },
+    {
+      "text": "chicken",
+      "start": 11.65,
+      "end": 11.83,
+      "deleted": false
+    },
+    {
+      "text": "leg",
+      "start": 11.83,
+      "end": 12.01,
+      "deleted": false
+    },
+    {
+      "text": "is",
+      "start": 12.01,
+      "end": 12.23,
+      "deleted": false
+    },
+    {
+      "text": "a",
+      "start": 12.23,
+      "end": 12.37,
+      "deleted": false
+    },
+    {
+      "text": "rare",
+      "start": 12.37,
+      "end": 12.55,
+      "deleted": false
+    },
+    {
+      "text": "dish.",
+      "start": 12.55,
+      "end": 13.07,
+      "deleted": false
+    },
+    {
+      "text": "Rice",
+      "start": 14.37,
+      "end": 14.53,
+      "deleted": false
+    },
+    {
+      "text": "is",
+      "start": 14.53,
+      "end": 14.81,
+      "deleted": false
+    },
+    {
+      "text": "often",
+      "start": 14.81,
+      "end": 15.09,
+      "deleted": false
+    },
+    {
+      "text": "served",
+      "start": 15.09,
+      "end": 15.37,
+      "deleted": false
+    },
+    {
+      "text": "in",
+      "start": 15.37,
+      "end": 15.63,
+      "deleted": false
+    },
+    {
+      "text": "round",
+      "start": 15.63,
+      "end": 15.87,
+      "deleted": false
+    },
+    {
+      "text": "bowls.",
+      "start": 15.87,
+      "end": 16.25,
+      "deleted": false
+    },
+    {
+      "text": "The",
+      "start": 17.48,
+      "end": 17.56,
+      "deleted": false
+    },
+    {
+      "text": "juice",
+      "start": 17.56,
+      "end": 17.76,
+      "deleted": false
+    },
+    {
+      "text": "of",
+      "start": 17.76,
+      "end": 18.0,
+      "deleted": false
+    },
+    {
+      "text": "lemon",
+      "start": 18.0,
+      "end": 18.24,
+      "deleted": false
+    },
+    {
+      "text": "makes",
+      "start": 18.24,
+      "end": 18.58,
+      "deleted": false
+    },
+    {
+      "text": "fine",
+      "start": 18.58,
+      "end": 18.98,
+      "deleted": false
+    },
+    {
+      "text": "punch.",
+      "start": 18.98,
+      "end": 19.42,
+      "deleted": false
+    },
+    {
+      "text": "The",
+      "start": 20.51,
+      "end": 20.69,
+      "deleted": false
+    },
+    {
+      "text": "box",
+      "start": 20.69,
+      "end": 20.93,
+      "deleted": false
+    },
+    {
+      "text": "was",
+      "start": 20.93,
+      "end": 21.13,
+      "deleted": false
+    },
+    {
+      "text": "thrown",
+      "start": 21.13,
+      "end": 21.37,
+      "deleted": false
+    },
+    {
+      "text": "beside",
+      "start": 21.37,
+      "end": 21.71,
+      "deleted": false
+    },
+    {
+      "text": "the",
+      "start": 21.71,
+      "end": 22.11,
+      "deleted": false
+    },
+    {
+      "text": "pork",
+      "start": 22.11,
+      "end": 22.15,
+      "deleted": false
+    },
+    {
+      "text": "truck.",
+      "start": 22.15,
+      "end": 22.55,
+      "deleted": false
+    },
+    {
+      "text": "The",
+      "start": 23.79,
+      "end": 23.95,
+      "deleted": false
+    },
+    {
+      "text": "hogs",
+      "start": 23.95,
+      "end": 24.29,
+      "deleted": false
+    },
+    {
+      "text": "were",
+      "start": 24.29,
+      "end": 24.43,
+      "deleted": false
+    },
+    {
+      "text": "fed",
+      "start": 24.43,
+      "end": 24.63,
+      "deleted": false
+    },
+    {
+      "text": "chopped",
+      "start": 24.63,
+      "end": 24.99,
+      "deleted": false
+    },
+    {
+      "text": "corn",
+      "start": 24.99,
+      "end": 25.27,
+      "deleted": false
+    },
+    {
+      "text": "and",
+      "start": 25.27,
+      "end": 25.41,
+      "deleted": false
+    },
+    {
+      "text": "garbage.",
+      "start": 25.41,
+      "end": 25.87,
+      "deleted": false
+    },
+    {
+      "text": "Four",
+      "start": 27.25,
+      "end": 27.41,
+      "deleted": false
+    },
+    {
+      "text": "hours",
+      "start": 27.41,
+      "end": 27.65,
+      "deleted": false
+    },
+    {
+      "text": "a",
+      "start": 27.65,
+      "end": 27.89,
+      "deleted": false
+    },
+    {
+      "text": "steady",
+      "start": 27.89,
+      "end": 28.03,
+      "deleted": false
+    },
+    {
+      "text": "work",
+      "start": 28.03,
+      "end": 28.31,
+      "deleted": false
+    },
+    {
+      "text": "faced",
+      "start": 28.31,
+      "end": 28.61,
+      "deleted": false
+    },
+    {
+      "text": "us.",
+      "start": 28.61,
+      "end": 29.23,
+      "deleted": false
+    },
+    {
+      "text": "A",
+      "start": 30.22,
+      "end": 30.3,
+      "deleted": false
+    },
+    {
+      "text": "large",
+      "start": 30.3,
+      "end": 30.5,
+      "deleted": false
+    },
+    {
+      "text": "size",
+      "start": 30.5,
+      "end": 30.78,
+      "deleted": false
+    },
+    {
+      "text": "and",
+      "start": 30.78,
+      "end": 31.02,
+      "deleted": false
+    },
+    {
+      "text": "stockings",
+      "start": 31.02,
+      "end": 31.36,
+      "deleted": false
+    },
+    {
+      "text": "is",
+      "start": 31.36,
+      "end": 31.56,
+      "deleted": false
+    },
+    {
+      "text": "hard",
+      "start": 31.56,
+      "end": 31.76,
+      "deleted": false
+    },
+    {
+      "text": "to",
+      "start": 31.76,
+      "end": 32.04,
+      "deleted": false
+    },
+    {
+      "text": "sell.",
+      "start": 32.04,
+      "end": 32.22,
+      "deleted": false
+    }
+  ]
+}
