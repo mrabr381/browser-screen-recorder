@@ -1,6 +1,7 @@
 # Browser Screen Recorder + Transcript Editor
 
 ![Browser Screen Recorder — record your screen, then cut the video by deleting words](assets/hero.svg)
+[![GitHub stars](https://img.shields.io/github/stars/mrabr381/browser-screen-recorder?style=social)](https://github.com/mrabr381/browser-screen-recorder) [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/muhammadabubakar)
 
 [![CI](https://github.com/mrabr381/browser-screen-recorder/actions/workflows/ci.yml/badge.svg)](https://github.com/mrabr381/browser-screen-recorder/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
@@ -19,8 +20,15 @@ server, no upload, no 5-minute cap, no 25-video limit.
 > sample (below). The Chrome extension has **not** been load-tested in a
 > real Chrome yet — its JavaScript passes `node --check` and the manifest
 > parses, but the first real Load-unpacked run is still an open check.
-> There is no live demo page yet (GitHub Pages is not enabled for this
-> repo), so nothing here links to one.
+> Try it in your browser: [live demo](https://mrabr381.github.io/browser-screen-recorder/demo/)
+> — record your screen with MediaRecorder and cut the bundled sample
+> transcript by deleting words (static page, no server, no upload).
+
+![Demo in use — deleting words 27–35 cuts the sample from 33.608 s to 31.368 s, with the timeline, kept/cut ranges and re-timed subtitles updating](demo/screenshot.png)
+*The live demo in use — deleting words 27–35 ("These days a chicken leg is a rare dish.") cuts the sample from **33.608 s to 31.368 s** (2.240 s saved, 73 words kept, 9 deleted); the timeline, cut ranges and re-timed subtitles update live.*
+
+![Demo in motion — deleting the sample sentence and watching the edited duration drop to 31.368 s](demo/demo.gif)
+*The demo in motion — one click deletes the sample sentence and the edited duration drops to 31.368 s.*
 
 ## What it does
 

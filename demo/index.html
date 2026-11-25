@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Browser Screen Recorder — live demo</title>
+<meta name="description" content="Record your screen in the browser with MediaRecorder, then cut the video by deleting words from the real sample transcript. No upload, no server.">
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; margin: 0; line-height: 1.55; color: #1a1a1a; background: #fafafa; }
+  @media (prefers-color-scheme: dark) { body { background: #111; color: #e8e8e8; } }
+  main { max-width: 920px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 1.7rem; line-height: 1.25; margin: 0 0 8px; }
+  h2 { font-size: 1.3rem; margin-top: 40px; border-top: 1px solid #ccc; padding-top: 24px; }
+  h3 { font-size: 1.05rem; margin: 24px 0 8px; }
+  p { margin: 8px 0; }
+  a { color: #0b5fff; }
+  .lede { font-size: 1.1rem; }
+  .note { border: 1px solid #c8a400; background: #fff8d6; padding: 12px 14px; border-radius: 8px; margin: 16px 0; color: #3d3400; }
+  @media (prefers-color-scheme: dark) { .note { background: #332d00; color: #ffe98a; border-color: #8a7a00; } }
+  .note strong { display: block; margin-bottom: 4px; }
+  .card { border: 1px solid #ccc; border-radius: 10px; padding: 16px; margin: 16px 0; background: #fff; }
+  @media (prefers-color-scheme: dark) { .card { background: #1c1c1c; border-color: #444; } }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 12px 0; }
+  button { font: inherit; padding: 8px 14px; border-radius: 8px; border: 1px solid #888; background: #f0f0f0; cursor: pointer; }
+  @media (prefers-color-scheme: dark) { button { background: #2a2a2a; color: #eee; border-color: #666; } }
+  button:disabled { opacity: 0.45; cursor: not-allowed; }
+  button.primary { background: #0b5fff; color: #fff; border-color: #0b5fff; }
+  button.danger { background: #b00020; color: #fff; border-color: #b00020; }
+  button.word { padding: 3px 7px; margin: 2px; border-radius: 6px; font-size: 0.95rem; }
+  button.word.deleted { background: #f6c6c6; color: #7a0000; text-decoration: line-through; border-color: #c00; }
+  @media (prefers-color-scheme: dark) { button.word.deleted { background: #5a1d1d; color: #ffb3b3; } }
+  label.check { display: inline-flex; gap: 6px; align-items: center; }
+  video { width: 100%; max-height: 480px; background: #000; border-radius: 8px; display: block; }
+  .status { font-weight: 600; }
+  .status.error { color: #b00020; }
+  .rec-dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; background: #999; margin-right: 6px; vertical-align: middle; }
+  .rec-dot.live { background: #e00; animation: blink 1s steps(2) infinite; }
+  @keyframes blink { 50% { opacity: 0.25; } }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 12px 0; }
+  .stat { border: 1px solid #ccc; border-radius: 8px; padding: 10px 12px; }
+  .stat b { display: block; font-size: 1.35rem; }
+  .stat span { font-size: 0.85rem; opacity: 0.8; }
+  .timeline { display: flex; height: 26px; border-radius: 6px; overflow: hidden; border: 1px solid #888; margin: 10px 0 4px; }
+  .timeline .kept { background: #2e9e4f; }
+  .timeline .cut { background: #d33; }
+  .legend { font-size: 0.85rem; opacity: 0.85; }
+  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin: 0 4px 0 10px; vertical-align: -1px; }
+  .legend .kept { background: #2e9e4f; }
+  .legend .cut { background: #d33; }
+  pre { background: #111; color: #e8e8e8; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 0.85rem; white-space: pre-wrap; }
+  .mono { font-family: ui-monospace, Menlo, Consolas, monospace; }
+  #edited-text { font-size: 1.05rem; }
+  #edited-text s { color: #b00020; }
+  code { font-size: 0.92em; }
+  footer { margin-top: 40px; font-size: 0.9rem; opacity: 0.85; border-top: 1px solid #ccc; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Browser Screen Recorder — live demo</h1>
+  <p class="lede">Record your screen, then cut the video by deleting words from the transcript. A free, local alternative to Loom.</p>
+  <p><a href="https://github.com/mrabr381/browser-screen-recorder">GitHub repo</a> &middot; <a href="https://github.com/mrabr381/browser-screen-recorder#readme">README</a> &middot; <a href="../sample_data/sample_output/index.html">Bundled sample: before / after</a></p>
+
+  <div class="note">
+    <strong>Read this first — stated plainly.</strong>
+    <ul>
+      <li>Screen capture needs a <strong>real browser</strong> (Chrome, Edge or Firefox) over HTTPS or localhost, and <strong>your permission</strong>: clicking Record opens the browser's own screen-picker (<code>getDisplayMedia</code>). Nothing is uploaded — the recording stays in your browser until you download it.</li>
+      <li>The Chrome extension has <strong>not</strong> been load-tested in a real Chrome yet — its JavaScript passes <code>node --check</code> and the manifest parses, but the first real Load-unpacked run is still an open check.</li>
+      <li>The Record / playback / download flow on this page is wired up but <strong>has not been verified in a real browser in this sandbox</strong> (there is no display here to capture). The transcript editor below <em>is</em> verified: its cut maths match the repo's Python tests and the shipped sample exactly.</li>
+    </ul>
+  </div>
+
+  <!-- ============ PART 1: RECORDER ============ -->
+  <h2>1. Record your screen — in this page</h2>
+  <p>Click <strong>Record</strong>, pick a screen, window or tab in the browser picker (tick “Share audio” if you want tab audio), then <strong>Stop</strong>. The recording plays back below and downloads as a <code>.webm</code>. This uses the same <code>MediaRecorder</code> + <code>getDisplayMedia</code> approach as the extension's <code>extension/recorder.js</code>.</p>
+
+  <div class="card">
+    <div class="controls">
+      <button id="btn-record" class="primary">● Record</button>
+      <button id="btn-pause" disabled>Pause</button>
+      <button id="btn-stop" class="danger" disabled>Stop</button>
+      <button id="btn-download" disabled>Download recording (.webm)</button>
+      <label class="check"><input type="checkbox" id="opt-mic"> Use microphone if the shared screen has no audio</label>
+    </div>
+    <p><span class="rec-dot" id="rec-dot"></span><span class="status" id="rec-status">Idle — nothing recorded yet.</span></p>
+    <p class="mono" id="rec-meta">Time 00:00 &middot; Size — &middot; Format —</p>
+    <h3>Live preview</h3>
+    <video id="preview" autoplay muted playsinline></video>
+    <h3>Playback</h3>
+    <video id="playback" controls playsinline></video>
+    <p id="rec-hint">Tip: if Record does nothing, this page is probably open from <code>file://</code> or an insecure origin — serve it over HTTP(S) (for example <code>python3 -m http.server</code> on localhost) or open the GitHub Pages link.</p>
+  </div>
+
+  <!-- ============ PART 2: TRANSCRIPT EDITOR ============ -->
+  <h2>2. Cut video by deleting words — real sample transcript</h2>
+  <p>This is the <strong>real bundled sample</strong> from the repo (<code>sample_data/sample_transcript.json</code>): Harvard sentences, transcribed locally with Whisper <code>tiny</code> — <strong>33.608&nbsp;s, 82 words</strong>. Click any word to delete / restore it. The timeline, cut ranges and new duration update live, using the same maths as <code>recorder/transcript.py</code> (0.05&nbsp;s padding around each deleted word; gaps over 0.8&nbsp;s split subtitle cues).</p>
+
+  <div class="card">
+    <div class="controls">
+      <button id="btn-delete-sample" class="primary">Delete the sample sentence (words 27–35)</button>
+      <button id="btn-reset-words">Reset all words</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="stat-orig">33.608 s</b><span>Original duration</span></div>
+      <div class="stat"><b id="stat-edited">33.608 s</b><span>Edited duration</span></div>
+      <div class="stat"><b id="stat-saved">0.000 s saved</b><span>Cut out</span></div>
+      <div class="stat"><b id="stat-kept">82 kept</b><span>Words kept / deleted</span></div>
+      <div class="stat"><b id="stat-cues">10 cues</b><span>Subtitle cues (edited)</span></div>
+    </div>
+    <h3>Timeline</h3>
+    <div class="timeline" id="timeline" aria-label="Kept and cut ranges"></div>
+    <p class="legend"><i class="kept"></i>kept <i class="cut"></i>cut out</p>
+    <p class="mono" id="stat-ranges">Removed ranges: none &middot; Kept ranges: [[0.00, 33.608]]</p>
+
+    <h3>Transcript — click a word to delete it</h3>
+    <p id="words" aria-label="Transcript words"></p>
+
+    <h3>Edited transcript</h3>
+    <p id="edited-text"></p>
+
+    <h3>Re-timed subtitles (edited SRT)</h3>
+    <pre id="srt-output"></pre>
+    <div class="controls">
+      <button id="btn-dl-srt">Download edited .srt</button>
+      <button id="btn-dl-txt">Download edited transcript (.txt)</button>
+      <button id="btn-dl-cuts">Download cuts.json</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Verified example — the numbers this demo must reproduce</h3>
+    <p>Deleting words 27–35 (“These days a chicken leg is a rare dish.”, 9 words) removes <strong>10.88–13.12&nbsp;s</strong> and leaves a <strong>31.368&nbsp;s</strong> video: 73 words kept, kept ranges <code>[[0.0, 10.88], [13.12, 33.608]]</code>. Subtitle cue 4 (“Rice is often served in round bowls.”) re-times from <code>00:00:14,370</code> to <code>00:00:12,130</code>, and the edited SRT has 9 cues instead of 10. These are the repo's own verified numbers (<code>tests/test_transcript.py</code>, <code>sample_data/sample_output/cuts.json</code>) — try the button above and check them.</p>
+  </div>
+
+  <footer>
+    <p>Static page only — no server, no API keys, no upload. The full pipeline (Chrome extension recording, local Whisper transcription, ffmpeg cutting) lives in the <a href="https://github.com/mrabr381/browser-screen-recorder">repo</a>. Rebuild the sample video locally with <code>bash sample_data/make_sample.sh</code>; run the cut-maths tests with <code>python -m pytest</code>.</p>
+  </footer>
+</main>
+<script src="app.js"></script>
+<footer style="text-align:center; padding: 24px 16px; margin-top: 32px; border-top: 1px solid #e5e7eb;"><a href="https://github.com/mrabr381/browser-screen-recorder" target="_blank" rel="noopener">⭐ Star on GitHub</a> &nbsp;·&nbsp; <a href="https://www.buymeacoffee.com/muhammadabubakar" target="_blank" rel="noopener"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" height="40" style="vertical-align: middle;"></a></footer>
+</body>
+</html>
